@@ -6,7 +6,8 @@ int exit_menu();
 void inputSales(double sales[][MONTHS],int branches);
 void printSales(double sales[][MONTHS],int branches);
 double totalSales(double sales[][MONTHS],int branches);
-
+void percentageSales(double sales[][MONTHS], int branches);
+void peakSales(double sales[][MONTHS],int branches);
 
 
 

@@ -16,7 +16,7 @@ void inputSales(double sales[][MONTHS],int branches){
     int branchNo,branchstart;  
     printf("How Many Of Your Branches Do You Want To Input Sales Of:");
     fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+    if(sscanf(branchNo_str,"%d",&branchNo)!=1){
         printf("Invalid Input Try Again!\n");
         return;
     }
@@ -48,7 +48,7 @@ void printSales(double sales[][MONTHS],int branches){
 
     printf("Enter How Many Of Your Branches Do You Want To Print The Sales Of:");
     fgets(branchNo_str,sizeof(branchNo_str),stdin);
-    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+    if(sscanf(branchNo_str,"%d",&branchNo)!=1){
         printf("Invalid Input Try Again!\n");
         return;
     }
@@ -83,5 +83,40 @@ double totalSales(double sales[][MONTHS],int branches){
     return sum;
 }
 
+void percentageSales(double sales[][MONTHS], int branches){
+    char branchNo_str[100];
+    int branchNo,branchstart;
+    double percent;
 
+    printf("Enter How Many Of Your Branches Do You Want To Print The Sales Of:");
+    fgets(branchNo_str,sizeof(branchNo_str),stdin);
+    if(sscanf(branchNo_str,"%d",&branchNo)!=1){
+        printf("Invalid Input Try Again!\n");
+        return;
+    }
 
+    printf("Enter Which Branch You Want To Start From:");
+    fgets(branchNo_str,sizeof(branchNo_str),stdin);
+    if(sscanf(branchNo_str,"%d",&branchstart)!=1){
+        printf("Invalid Input Try Again!\n");
+        return;
+    }
+
+    int end=branchstart+branchNo-1;
+        if (branchNo<=0||end>branches|| branchstart<=0){ 
+        printf("Invalid Input Try Again!\n");
+        return;
+    }
+    double companyTotal=totalSales(sales,branches);
+    for (int i=branchstart-1;i<end;i++){
+
+        double branchTotal=0;//* Reset For Each Branch
+
+        for (int j=0;j<MONTHS;j++){
+            //* Calculate Branch Total Sales First In Inner Loop Alone
+            branchTotal+=sales[i][j];
+        }
+        percent=(branchTotal/companyTotal)*100.0;
+        printf("Percentage Of Branch No.%d: %.2f%\n",i+1,percent);
+    }
+}

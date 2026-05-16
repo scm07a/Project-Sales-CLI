@@ -52,7 +52,7 @@ int main(){
         }
         
         else if (option == 4){
-            continue;
+            percentageSales(sales,branches);
         }
         
         else if (option == 5){
