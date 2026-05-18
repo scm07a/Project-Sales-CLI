@@ -17,6 +17,18 @@ CMD/Powershell: main
 
 Bash Shell/Linux Terminal: ./main
 
+Features: 
+
+1.Input Sales
+
+2.Print Sales
+
+3.Determine Month With Peak Sales
+
+4.Determine Branch Percentages
+
+5.Sort Each Branches By Month / And Each Months By Branch
+
 
 
  
